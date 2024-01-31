@@ -9,6 +9,8 @@
   "author": "Engda",
   "license": "ISC",
   "dependencies": {
+    "enquire": "^0.0.2",
+    "enquirer": "^2.4.1",
     "inquirer": "^8.2.4",
     "mysql2": "^3.9.1"
   }
