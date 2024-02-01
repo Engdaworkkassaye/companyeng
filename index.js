@@ -1,5 +1,6 @@
 const { prompt } = require('enquirer');
-const { viewAllDepartments,  addDepartment,addRole,viewAllRoles } = require('./utils/actions');
+const { viewAllDepartments,  addDepartment,addRole,viewAllRoles,addEmployee,updateEmployeeRole,viewAllEmployees
+ } = require('./utils/actions');
 
 async function start() {
   const response = await prompt({
@@ -38,7 +39,18 @@ async function start() {
         case 'Add a role':
       await addRole();
       break;
-      
+
+      case 'View all employees':
+      await viewAllEmployees();
+      break;
+
+      case 'Add an employee':
+      await addEmployee();
+      break;
+    case 'Update an employee role':
+      await updateEmployeeRole();
+      break;
+
     case 'Exit':
       console.log('Exiting the application.');
       process.exit();
