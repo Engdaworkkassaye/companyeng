@@ -1,5 +1,5 @@
 const { prompt } = require('enquirer');
-
+const { viewAllDepartments,  addDepartment } = require('./utils/actions');
 
 async function start() {
   const response = await prompt({
@@ -22,8 +22,23 @@ async function start() {
   });
   
 
+  switch (response.action) {
+    case 'View all departments':
+      await viewAllDepartments();
+      break;
+    
+    case 'Add a department':
+      await addDepartment();
+      break;
+    
+    case 'Exit':
+      console.log('Exiting the application.');
+      process.exit();
+  }
+
   
   start();
 }
+
 
 start();
