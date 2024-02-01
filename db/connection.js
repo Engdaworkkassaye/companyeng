@@ -1,27 +1,19 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 const util = require('util');
 
-
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: 'password',
   database: 'employee',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 });
 
-
-const query = util.promisify(connection.query).bind(connection);
-
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to the database: ', err);
-    throw err;
-  }
-  console.log('Connected to the database.');
-});
-
+const query = util.promisify(pool.query).bind(pool);
 
 module.exports = {
-  connection,
+  pool,
   query,
 };

@@ -6,7 +6,7 @@ const Employee = require('../models/employee');
 
 async function viewAllDepartments() {
   const departments = await Department.getAllDepartments();
-  console.table(departments);
+  console.log(departments);
 }
 
 async function addDepartment() {
